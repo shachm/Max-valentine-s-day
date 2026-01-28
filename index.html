@@ -6,7 +6,7 @@
   <style>
     body {
       margin: 0;
-      font-family: 'Arial', sans-serif;
+      font-family: Arial, sans-serif;
       background: #0f172a;
       color: white;
       text-align: center;
@@ -15,7 +15,7 @@
 
     .screen {
       display: none;
-      height: 100vh;
+      min-height: 100vh;
       padding: 40px;
       box-sizing: border-box;
     }
@@ -31,10 +31,11 @@
 
     p {
       font-size: 1.3em;
+      line-height: 1.6;
     }
 
     button {
-      margin-top: 40px;
+      margin: 20px;
       padding: 15px 30px;
       font-size: 1.2em;
       border: none;
@@ -50,6 +51,18 @@
       transform: scale(1.05);
     }
 
+    /* éléments déco chimie */
+    .chem {
+      position: absolute;
+      font-size: 2.5em;
+      opacity: 0.15;
+    }
+
+    .c1 { top: 10%; left: 10%; }
+    .c2 { top: 20%; right: 15%; }
+    .c3 { bottom: 20%; left: 15%; }
+    .c4 { bottom: 10%; right: 10%; }
+
     .cards {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
@@ -61,7 +74,6 @@
       background: #1e293b;
       padding: 20px;
       border-radius: 20px;
-      font-size: 1.1em;
     }
 
     .explosion {
@@ -76,17 +88,30 @@
       75% { transform: translate(10px); }
       100% { transform: translate(0); }
     }
+
+    img {
+      max-width: 300px;
+      border-radius: 20px;
+      margin: 20px 0;
+    }
   </style>
 </head>
 
 <body>
 
+  <!-- DÉCO -->
+  <div class="chem c1">⚗️</div>
+  <div class="chem c2">🧪</div>
+  <div class="chem c3">🔬</div>
+  <div class="chem c4">⚛️</div>
+
   <!-- ÉCRAN 1 -->
   <div class="screen active" id="screen1">
     <h1>🧪 Expérience n°14</h1>
     <p>
-      Laboratoire de chimie sentimentale<br><br>
-      Objectif : étudier la réaction entre deux éléments hautement instables.
+      Laboratoire de chimie<br><br>
+      Objectif : observer la réaction entre deux éléments hautement incompatibles…
+      <br>mais étrangement parfaits ensemble.
     </p>
     <button onclick="nextScreen(2)">Lancer l’expérience</button>
   </div>
@@ -96,9 +121,9 @@
     <h1>⚗️ Ingrédients</h1>
     <div class="cards">
       <div class="card">🧪 Élément A<br><strong>Shany</strong><br>(chimiste passionnée)</div>
-      <div class="card">🔥 Élément B<br><strong>Maxence</strong><br>(facteur déclenchant)</div>
-      <div class="card">💛 Catalyseur<br><strong>Fous rires</strong><br>(quantité illimitée)</div>
-      <div class="card">⏳ Temps de réaction<br><strong>1 an et demi</strong><br>(et ça s’intensifie)</div>
+      <div class="card">🔥 Élément B<br><strong>Maxence</strong><br>(réactif imprévisible)</div>
+      <div class="card">💛 Catalyseur<br><strong>Fous rires</strong><br>(dose critique dépassée)</div>
+      <div class="card">⏳ Temps de réaction<br><strong>1 an et demi</strong><br>(et toujours en cours)</div>
     </div>
     <button onclick="nextScreen(3)">Mélanger les éléments</button>
   </div>
@@ -108,7 +133,7 @@
     <h1 class="explosion">💥</h1>
     <p>
       Réaction incontrôlable détectée…<br><br>
-      Résultat : <strong>amour explosif, stable et hautement addictif</strong>.
+      Résultat : <strong>amour stable, intense et irréversible</strong>.
     </p>
     <button onclick="nextScreen(4)">Analyser le résultat</button>
   </div>
@@ -116,19 +141,31 @@
   <!-- ÉCRAN 4 -->
   <div class="screen" id="screen4">
     <h1>❤️ Conclusion</h1>
+    <img src="nous.jpg" alt="Nous deux">
     <p>
       Contre toute attente scientifique,<br>
-      cette expérience est la plus belle de ma vie.<br><br>
-      Et je veux continuer à la refaire avec toi,<br>
-      encore et encore, sans jamais neutraliser la réaction.
+      cette expérience est la plus belle de ma vie.
     </p>
-    <button onclick="alert('Bonne réponse 😏❤️')">Continuer l’expérience avec toi ♾️</button>
+
+    <button onclick="showResult('ok')">Continuer l’expérience avec toi ♾️</button>
+    <button onclick="showResult('ring')">Recommencer pour toujours 💍</button>
+
+    <p id="result"></p>
   </div>
 
   <script>
     function nextScreen(n) {
       document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
       document.getElementById('screen' + n).classList.add('active');
+    }
+
+    function showResult(choice) {
+      const r = document.getElementById('result');
+      if (choice === 'ok') {
+        r.innerHTML = "Bonne réponse 😏❤️🧪<br>Cette expérience mérite d’être répétée à l’infini.";
+      } else {
+        r.innerHTML = "J’attends toujours ma bague 😌💍";
+      }
     }
   </script>
 
