@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>Expérience n°14</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Arial', sans-serif;
+      background: #0f172a;
+      color: white;
+      text-align: center;
+      overflow: hidden;
+    }
+
+    .screen {
+      display: none;
+      height: 100vh;
+      padding: 40px;
+      box-sizing: border-box;
+    }
+
+    .active {
+      display: block;
+    }
+
+    h1 {
+      font-size: 3em;
+      margin-bottom: 20px;
+    }
+
+    p {
+      font-size: 1.3em;
+    }
+
+    button {
+      margin-top: 40px;
+      padding: 15px 30px;
+      font-size: 1.2em;
+      border: none;
+      border-radius: 30px;
+      background: #ec4899;
+      color: white;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    button:hover {
+      background: #f472b6;
+      transform: scale(1.05);
+    }
+
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 20px;
+      margin-top: 40px;
+    }
+
+    .card {
+      background: #1e293b;
+      padding: 20px;
+      border-radius: 20px;
+      font-size: 1.1em;
+    }
+
+    .explosion {
+      font-size: 5em;
+      animation: shake 0.4s infinite;
+    }
+
+    @keyframes shake {
+      0% { transform: translate(0); }
+      25% { transform: translate(10px); }
+      50% { transform: translate(-10px); }
+      75% { transform: translate(10px); }
+      100% { transform: translate(0); }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- ÉCRAN 1 -->
+  <div class="screen active" id="screen1">
+    <h1>🧪 Expérience n°14</h1>
+    <p>
+      Laboratoire de chimie sentimentale<br><br>
+      Objectif : étudier la réaction entre deux éléments hautement instables.
+    </p>
+    <button onclick="nextScreen(2)">Lancer l’expérience</button>
+  </div>
+
+  <!-- ÉCRAN 2 -->
+  <div class="screen" id="screen2">
+    <h1>⚗️ Ingrédients</h1>
+    <div class="cards">
+      <div class="card">🧪 Élément A<br><strong>Shany</strong><br>(chimiste passionnée)</div>
+      <div class="card">🔥 Élément B<br><strong>Maxence</strong><br>(facteur déclenchant)</div>
+      <div class="card">💛 Catalyseur<br><strong>Fous rires</strong><br>(quantité illimitée)</div>
+      <div class="card">⏳ Temps de réaction<br><strong>1 an et demi</strong><br>(et ça s’intensifie)</div>
+    </div>
+    <button onclick="nextScreen(3)">Mélanger les éléments</button>
+  </div>
+
+  <!-- ÉCRAN 3 -->
+  <div class="screen" id="screen3">
+    <h1 class="explosion">💥</h1>
+    <p>
+      Réaction incontrôlable détectée…<br><br>
+      Résultat : <strong>amour explosif, stable et hautement addictif</strong>.
+    </p>
+    <button onclick="nextScreen(4)">Analyser le résultat</button>
+  </div>
+
+  <!-- ÉCRAN 4 -->
+  <div class="screen" id="screen4">
+    <h1>❤️ Conclusion</h1>
+    <p>
+      Contre toute attente scientifique,<br>
+      cette expérience est la plus belle de ma vie.<br><br>
+      Et je veux continuer à la refaire avec toi,<br>
+      encore et encore, sans jamais neutraliser la réaction.
+    </p>
+    <button onclick="alert('Bonne réponse 😏❤️')">Continuer l’expérience avec toi ♾️</button>
+  </div>
+
+  <script>
+    function nextScreen(n) {
+      document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
+      document.getElementById('screen' + n).classList.add('active');
+    }
+  </script>
+
+</body>
+</html>
