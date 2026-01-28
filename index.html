@@ -94,6 +94,27 @@
       border-radius: 20px;
       margin: 20px 0;
     }
+    #screen4 {
+      position: relative;
+      background: url('https://raw.githubusercontent.com/ton-utilisateur/ton-repo/main/nous.jpg') no-repeat center center;
+      background-size: cover;
+  /* couleur semi-transparente pour que le texte reste lisible */
+      color: white;
+    }
+
+    #screen4::before {
+      content: "";
+      position: absolute;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: rgba(0, 0, 0, 0.4); /* voile sombre transparent */
+      z-index: 1;
+    }
+
+    #screen4 .text, #screen4 .buttons, #screen4 h1, #screen4 p#result {
+      position: relative;
+      z-index: 2; /* texte au-dessus du voile */
+    }
+
     .text {
       margin: 20px 0;
       font-size: 1.3em;
@@ -149,17 +170,19 @@
   <!-- ÉCRAN 4 -->
   <div class="screen" id="screen4">
     <h1>❤️ Conclusion</h1>
-    <img src="https://raw.githubusercontent.com/ton-utilisateur/ton-repo/main/nous.jpg" alt="Nous deux">
+    
     <div class ="text">
       Contre toute attente scientifique,<br>
       cette expérience est la plus belle de ma vie.<br>
        Et je veux continuer à la refaire avec toi,<br>
       encore et encore, sans jamais neutraliser la réaction.
     </div>
+    
     <div class="buttons">
     <button onclick="showResult('ok')">Continuer l’expérience avec toi ♾️</button>
     <button onclick="showResult('ring')">Recommencer pour toujours 💍</button>
     </div>
+    
     <p id="result"></p>
   </div>
 
@@ -181,6 +204,7 @@
 
 </body>
 </html>
+
 
 
 
